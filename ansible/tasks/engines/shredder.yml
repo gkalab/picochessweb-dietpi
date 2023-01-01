@@ -1,0 +1,60 @@
+---
+# Shredder Classic 4 MP is a Linux x86 binary - needs box86 to run
+- name: Synchronize Shredder Classic 4
+  ansible.posix.synchronize:
+    src: files/extra_engines/shredder/
+    dest: /opt/picochess/engines/{{ ansible_architecture }}/shredder/
+
+- name: Ensure "name=Shredder Classic 4 MP" is in shredder section
+  community.general.ini_file:
+    path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
+    section: shredder/ShredderClassic4LinuxMP
+    option: name
+    value: Shredder Classic 4 MP
+    state: present
+    create: false
+
+- name: Ensure "small=Shredder" is in shredder section
+  community.general.ini_file:
+    path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
+    section: shredder/ShredderClassic4LinuxMP
+    option: small
+    value: Shredder
+    state: present
+    create: false
+
+- name: Ensure "medium=Shredder4" is in shredder section
+  community.general.ini_file:
+    path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
+    section: shredder/ShredderClassic4LinuxMP
+    option: medium
+    value: Shredder4
+    state: present
+    create: false
+
+- name: Ensure "large=Shredder Classic 4 MP" is in shredder section
+  community.general.ini_file:
+    path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
+    section: shredder/ShredderClassic4LinuxMP
+    option: large
+    value: Shredder Classic 4 MP
+    state: present
+    create: false
+
+- name: Ensure "elo=2600" is in shredder section
+  community.general.ini_file:
+    path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
+    section: shredder/ShredderClassic4LinuxMP
+    option: elo
+    value: 2600
+    state: present
+    create: false
+
+- name: Ensure "ponder/brain=n" is in shredder section
+  community.general.ini_file:
+    path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
+    section: shredder/ShredderClassic4LinuxMP
+    option: ponder/brain
+    value: n
+    state: present
+    create: false

@@ -1,0 +1,9 @@
+---
+- name: Include correct architecture file, depending on the architecture
+  ansible.builtin.include_tasks: "{{ architecture_file }}"
+  with_first_found:
+    - files:
+        - "arch-{{ ansible_architecture }}.yml"
+      skip: true
+  loop_control:
+    loop_var: architecture_file

@@ -1,0 +1,5 @@
+---
+- name: Synchronize voices
+  ansible.posix.synchronize:
+    src: files/talker/
+    dest: /opt/picochess/talker/

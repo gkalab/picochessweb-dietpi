@@ -1,0 +1,11 @@
+---
+- name: Change hostname to picochess
+  ansible.builtin.hostname:
+    name: "picochess"
+
+- name: Replace hostname in /etc/hosts
+  ansible.builtin.lineinfile:
+    dest: /etc/hosts
+    regexp: '^127\.0\.1\.1'
+    line: '127.0.1.1 picochess'
+    state: present

@@ -1,0 +1,35 @@
+---
+- name: Install PicoChessWeb
+  hosts: picochess
+  become: true
+
+  tasks:
+    - name: Setup system
+      ansible.builtin.import_tasks: tasks/system.yml
+
+    - name: Update hostname
+      ansible.builtin.import_tasks: tasks/update_hostname.yml
+
+    - name: Install PicoChess
+      ansible.builtin.import_tasks: tasks/picochess.yml
+
+    - name: Install games database
+      ansible.builtin.import_tasks: tasks/gamesdb.yml
+
+    - name: Install opening book server
+      ansible.builtin.import_tasks: tasks/obooksrv.yml
+
+    - name: Install voices
+      ansible.builtin.import_tasks: tasks/voices.yml
+      tags: voices
+
+    - name: Install architecture dependent binaries/engines
+      ansible.builtin.import_tasks: tasks/architecture.yml
+      tags: engines
+
+    - name: Add splash screen
+      ansible.builtin.import_tasks: tasks/splash.yml
+      tags: splash
+
+    - name: Reboot
+      ansible.builtin.import_tasks: tasks/reboot.yml

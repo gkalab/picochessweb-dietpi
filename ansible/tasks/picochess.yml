@@ -1,0 +1,65 @@
+---
+- name: Clone https://github.com/gkalab/picochess
+  ansible.builtin.git:
+    repo: https://github.com/gkalab/picochess
+    version: feature/picochessweb
+    dest: /opt/picochess
+    force: true
+
+- name: Synchronize picochess files
+  ansible.posix.synchronize:
+    src: files/opt/picochess/
+    dest: /opt/picochess/
+
+- name: Ensure default engine is present in picochess.ini
+  ansible.builtin.lineinfile:
+    dest: /opt/picochess/picochess.ini
+    regexp: '^engine ='
+    line: 'engine = /opt/picochess/engines/{{ ansible_architecture }}/a-stockf'
+    state: present
+
+- name: Ensure default tutor engine is present in picochess.ini
+  ansible.builtin.lineinfile:
+    dest: /opt/picochess/picochess.ini
+    regexp: '^tutor-engine ='
+    line: 'tutor-engine = /opt/picochess/engines/{{ ansible_architecture }}/a-stockf'
+    state: present
+
+- name: Synchronize service definitions
+  ansible.posix.synchronize:
+    src: files/etc/systemd/system/
+    dest: /etc/systemd/system/
+
+# the bcrypt module requires Rust to compile
+- name: Check if cargo is installed
+  ansible.builtin.shell: command -v cargo >/dev/null 2>&1
+  register: cargo_exists
+  ignore_errors: true
+  changed_when: false
+  tags:
+    - rust
+
+- name: Download rustup
+  when: cargo_exists is failed
+  ansible.builtin.get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/sh.rustup.rs
+    mode: '0755'
+    force: 'yes'
+  tags:
+    - rust
+
+- name: Install rust/cargo
+  when: cargo_exists is failed
+  ansible.builtin.command: /tmp/sh.rustup.rs -y
+  tags:
+    - rust
+
+- name: Install PicoChess dependencies
+  ansible.builtin.pip:
+    requirements: /opt/picochess/requirements.txt
+
+- name: Enable service picochess
+  ansible.builtin.service:
+    name: picochess
+    enabled: true

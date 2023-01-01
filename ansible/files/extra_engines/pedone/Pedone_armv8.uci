@@ -1,0 +1,37 @@
+[DEFAULT]
+OwnBook = true
+Threads = 1
+
+[Strength 01]
+Strength = 1
+
+[Strength 10]
+Strength = 10
+
+[Strength 20]
+Strength = 20
+
+[Strength 30]
+Strength = 30
+
+[Strength 40]
+Strength = 40
+
+[Strength 50]
+Strength = 50
+
+[Strength 60]
+Strength = 60
+
+[Strength 70]
+Strength = 70
+
+[Strength 80]
+Strength = 80
+
+[Strength 90]
+Strength = 90
+
+[Full strength]
+Strength = 100
+Threads = 3

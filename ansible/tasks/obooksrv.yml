@@ -1,0 +1,11 @@
+---
+- name: Ensure obooksrv binary is available
+  ansible.builtin.copy:
+    src: files/obooksrv/obooksrv_{{ ansible_architecture }}
+    dest: /opt/picochess/obooksrv/obooksrv
+    mode: preserve
+
+- name: Enable service obooksrv
+  ansible.builtin.service:
+    name: obooksrv
+    enabled: true

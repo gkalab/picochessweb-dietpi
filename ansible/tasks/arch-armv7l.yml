@@ -1,0 +1,20 @@
+---
+- name: Synchronize box86 files
+  ansible.posix.synchronize:
+    src: files/box86/
+    dest: /
+
+- name: Restart service systemd-binfmt
+  ansible.builtin.service:
+    name: systemd-binfmt
+    state: restarted
+
+- name: Synchronize engines
+  ansible.posix.synchronize:
+    src: files/engines/
+    dest: /opt/picochess/engines/
+    rsync_opts:
+      - "--exclude=aarch64"
+
+- name: Install Shredder 4 Classic MP (Linux x86 32-bit)
+  ansible.builtin.include_tasks: engines/shredder.yml

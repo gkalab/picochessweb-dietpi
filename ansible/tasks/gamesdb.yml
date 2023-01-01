@@ -1,0 +1,11 @@
+---
+- name: Ensure tcscid binary is available
+  ansible.builtin.copy:
+    src: files/scid/tcscid_{{ ansible_architecture }}
+    dest: /opt/picochess/gamesdb/tcscid
+    mode: preserve
+
+- name: Enable service gamesdb
+  ansible.builtin.service:
+    name: gamesdb
+    enabled: true

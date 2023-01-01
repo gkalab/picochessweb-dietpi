@@ -1,0 +1,8 @@
+config/dietpi-wifi.txt
+ansible/files/*.tar.zst
+ansible/files/talker/
+ansible/files/extra_engines/komodo13/komodo-13.02-linux
+ansible/files/extra_engines/shredder/ShredderClassic4LinuxMP
+ansible/files/extra_engines/shredder/ShredderClassic4LinuxMP.reg
+ansible/files/extra_engines/pedone/Pedone_armv8
+ansible/files/engines/

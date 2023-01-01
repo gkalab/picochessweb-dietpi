@@ -1,0 +1,56 @@
+---
+- name: Ensure system tools are installed (Debian)
+  ansible.builtin.apt:
+    name:
+      - rsync
+      - less
+      - git
+      - openssh-sftp-server  # scp and sftp support for dropbear
+      - openssh-client  # scp and sftp support for dropbear
+      - avahi-daemon  # mDNS
+      - python3-pip
+      - build-essential
+      - sox
+      - libopenblas-base  # maia engine
+      - libsdl2-2.0-0  # mess
+      - libsdl2-ttf-2.0-0  # mess
+      - libqt5widgets5  # mess
+      - libssl-dev  # for compiling cryptography python lib (rust compilation)
+      - libglib2.0-dev  # for compiling bluepy
+      - libtcl8.6  # tcscid
+      - unclutter  # supports hiding the mouse cursor in Chromium
+    state: present
+  when: ansible_facts.os_family == "Debian"
+
+- name: Hide mouse cursor (Chromium) - setup
+  ansible.builtin.lineinfile:
+    state: present
+    dest: "/etc/chromium.d/dietpi-unclutter"
+    create: true
+    regexp: "^#?/usr/bin/unclutter"
+    line: "/usr/bin/unclutter -idle 0.1 &"
+    mode: 0644
+
+- name: Copy Chromium startup file to enable OverlayScrollbar feature to fix dark mode scrollbars
+  ansible.builtin.copy:
+    src: files/var/lib/dietpi/dietpi-software/installed/chromium-autostart.sh
+    dest: /var/lib/dietpi/dietpi-software/installed/chromium-autostart.sh
+    mode: preserve
+
+- name: Check if soundcard is enabled
+  ansible.builtin.command: aplay -l | grep "bcm2835 HDMI"
+  register: soundcard_enabled
+  ignore_errors: true
+  changed_when: false
+
+- name: Ensure soundcard is enabled
+  when: soundcard_enabled is failed
+  ansible.builtin.command:
+    cmd: /boot/dietpi/func/dietpi-set_hardware soundcard rpi-bcm2835-auto
+
+- name: Get service facts
+  ansible.builtin.service_facts:
+
+- name: Ensure bluetooth is enabled
+  when: ansible_facts.services["bluetooth.service"] is not defined
+  ansible.builtin.command: /boot/dietpi/func/dietpi-set_hardware bluetooth enable

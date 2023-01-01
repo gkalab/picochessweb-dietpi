@@ -1,0 +1,37 @@
+---
+- name: Copy initramfs.img and dependencies
+  ansible.builtin.copy:
+    src: files/boot/
+    dest: /boot/
+    mode: preserve
+
+- name: Ensure initramfs is set in config.txt
+  ansible.builtin.lineinfile:
+    path: /boot/config.txt
+    line: initramfs initramfs.img
+
+# update values in /boot/cmdline.txt
+- name: Set cmdline_txt_path variable
+  ansible.builtin.set_fact:
+    cmdline_txt_path: /boot/cmdline.txt
+
+- name: Ensure cursor is hidden on startup
+  ansible.builtin.include_tasks: cmdline.yml
+  vars:
+    key: vt.global_cursor_default
+    value: 0
+    update: true
+
+- name: Ensure console is tty3
+  ansible.builtin.include_tasks: cmdline.yml
+  vars:
+    key: console
+    value: tty3
+    update: true
+
+- name: Ensure loglevel is 0
+  ansible.builtin.include_tasks: cmdline.yml
+  vars:
+    key: loglevel
+    value: 0
+    update: true

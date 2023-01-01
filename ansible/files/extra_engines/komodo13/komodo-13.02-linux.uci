@@ -1,0 +1,68 @@
+[DEFAULT]
+Hash = 192 
+OwnBook = true
+Threads = 1
+
+[Elo@0050]
+Skill = 0
+
+[Elo@0200]
+Skill = 1
+
+[Elo@0350]
+Skill = 2
+
+[Elo@0500]
+Skill = 3
+
+[Elo@0650]
+Skill = 4
+
+[Elo@0800]
+Skill = 5
+
+[Elo@0950]
+Skill = 6
+
+[Elo@1100]
+Skill = 7
+
+[Elo@1250]
+Skill = 8
+
+[Elo@1400]
+Skill = 9
+
+[Elo@1550]
+Skill = 10
+
+[Elo@1700]
+Skill = 11
+
+[Elo@1850]
+Skill = 12
+
+[Elo@2000]
+Skill = 13
+
+[Elo@2150]
+Skill = 14
+
+[Elo@2300]
+Skill = 15
+
+[Elo@2450]
+Skill = 16
+
+[Elo@2600]
+Skill = 17
+
+[Elo@2750]
+Skill = 18
+
+[Elo@2900]
+Skill = 19
+
+[Full strength]
+Skill = 20
+Threads = 3

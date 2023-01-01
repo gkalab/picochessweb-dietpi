@@ -1,0 +1,85 @@
+[DEFAULT]
+Hash = 192 
+OwnBook = false
+Threads = 1
+
+[Auto ELO]
+UCI_LimitStrength = true
+UCI_Elo = exec("import random; random.seed();") or (auto + random.randint(50,100))
+
+[Elo@0850]
+UCI_LimitStrength = true
+UCI_Elo = 850
+
+[Elo@0950]
+UCI_LimitStrength = true
+UCI_Elo = 950
+
+[Elo@1050]
+UCI_LimitStrength = true
+UCI_Elo = 1050
+
+[Elo@1150]
+UCI_LimitStrength = true
+UCI_Elo = 1150
+
+[Elo@1250]
+UCI_LimitStrength = true
+UCI_Elo = 1250
+
+[Elo@1350]
+UCI_LimitStrength = true
+UCI_Elo = 1350
+
+[Elo@1450]
+UCI_LimitStrength = true
+UCI_Elo = 1450
+
+[Elo@1550]
+UCI_LimitStrength = true
+UCI_Elo = 1550
+
+[Elo@1650]
+UCI_LimitStrength = true
+UCI_Elo = 1650
+
+[Elo@1750]
+UCI_LimitStrength = true
+UCI_Elo = 1750
+
+[Elo@1850]
+UCI_LimitStrength = true
+UCI_Elo = 1850
+
+[Elo@1950]
+UCI_LimitStrength = true
+UCI_Elo = 1950
+
+[Elo@2050]
+UCI_LimitStrength = true
+UCI_Elo = 2050
+
+[Elo@2150]
+UCI_LimitStrength = true
+UCI_Elo = 2150
+
+[Elo@2250]
+UCI_LimitStrength = true
+UCI_Elo = 2250
+
+[Elo@2350]
+UCI_LimitStrength = true
+UCI_Elo = 2350
+
+[Elo@2450]
+UCI_LimitStrength = true
+UCI_Elo = 2450
+
+[Elo@2600]
+UCI_LimitStrength = false
+UCI_Elo = 2600
+
+[Three threads]
+UCI_LimitStrength = false
+UCI_Elo = 2600
+Threads = 3

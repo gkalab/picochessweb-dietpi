@@ -1,0 +1,62 @@
+---
+# box64
+- name: Synchronize box64 files
+  ansible.posix.synchronize:
+    src: files/box64/
+    dest: /
+
+# box86
+- name: Check if armhf is enabled
+  shell: dpkg --print-foreign-architectures | grep armhf
+  register: result_armhf_check
+  changed_when: result_armhf_check.rc == 1
+  failed_when: result_armhf_check.rc > 1
+
+- name: Enable armhf architecture
+  command: dpkg --add-architecture armhf
+  when: result_armhf_check.rc == 1
+
+- name: Ensure apt cache is up to date
+  ansible.builtin.apt: update_cache=yes
+  when: result_armhf_check.rc == 1
+
+- name: Ensure armhf libraries are installed
+  ansible.builtin.apt:
+    name: 
+      - libc6:armhf
+      - libatomic1:armhf 
+      - libstdc++6:armhf 
+      - libopenblas-dev:armhf 
+      - zlib1g:armhf 
+      - libxcb1:armhf
+    state: present
+  when: result_armhf_check.rc == 1
+
+- name: Synchronize box86 files
+  ansible.posix.synchronize:
+    src: files/box86/
+    dest: /
+
+- name: Restart service systemd-binfmt
+  ansible.builtin.service:
+    name: systemd-binfmt
+    state: restarted
+
+- name: Synchronize engines
+  ansible.posix.synchronize:
+    src: files/engines/
+    dest: /opt/picochess/engines/
+    rsync_opts:
+      - "--exclude=armv7l"
+
+# Komodo engine
+- name: Install Komodo 13 (Linux x86_64)
+  ansible.builtin.include_tasks: engines/komodo13.yml
+
+# Shredder 4 Classic MP
+- name: Install Shredder 4 Classic MP (Linux x86 32-bit)
+  ansible.builtin.include_tasks: engines/shredder.yml
+
+# Pedone 3.0 engine
+- name: Install Pedone 3.0
+  ansible.builtin.include_tasks: engines/pedone.yml

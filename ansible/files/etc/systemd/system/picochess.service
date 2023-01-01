@@ -1,0 +1,14 @@
+[Unit]
+Description=PicoChess stand alone chess computer
+After=multi-user.target
+
+[Service]
+Environment="DISPLAY=:0"
+Environment="XAUTHORITY=/home/dietpi/.Xauthority"
+Type=simple
+ExecStart=/usr/bin/python3 /opt/picochess/picochess.py
+ExecStop=/usr/bin/pkill -f picochess.py
+WorkingDirectory=/opt/picochess/
+
+[Install]
+WantedBy=graphical.target

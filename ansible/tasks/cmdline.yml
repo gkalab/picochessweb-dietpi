@@ -1,0 +1,26 @@
+---
+- name: Read cmdline.txt
+  become: true
+  ansible.builtin.slurp:
+    src: "{{ cmdline_txt_path }}"
+  register: result_cmdline
+
+- name: Generate regular expression for existing arguments
+  ansible.builtin.set_fact:
+    regex_existing: '{{ "\b" + key | string + "=" + ("[\w]*" if update else value | string) + "\b" }}'
+    key_value_pair: '{{ key | string + "=" + value | string }}'
+
+- name: Generate regular expression for new arguments
+  ansible.builtin.set_fact:
+    regex_add_missing: '{{ "^((?!(?:.|\n)*" + regex_existing + ")((?:.|\n)*))$" }}'
+
+- name: Update cmdline.txt
+  become: true
+  ansible.builtin.copy:
+    content: '{{ result_cmdline.content
+        | b64decode
+        | regex_replace(regex_existing, key_value_pair)
+        | regex_replace(regex_add_missing, key_value_pair + " \1")
+      }}'
+    dest: "{{ cmdline_txt_path }}"
+    mode: preserve
