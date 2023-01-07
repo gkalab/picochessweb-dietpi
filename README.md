@@ -53,8 +53,6 @@ Run the playbook: `ansible-playbook --ask-vault-pass main.yml`
 
 You can run the playbook again if you update engine or audio files. The first run on a freshly installed system takes a little over 20 minutes using wifi.
 
-	Note: You can ignore the warning about the sftp and scp transfer mechanism. The warnings are there due to missing openssh libraries that will be installed later in the system task.
-
 ## Cleanup
 
 Check the /boot/config.txt file for changes. I need to remove the line
