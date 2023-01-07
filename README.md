@@ -14,11 +14,11 @@ Last DietPi version tested: DietPi v8.12.1
 
 ## First boot
 
-Boot the Raspberry Pi with the SD-card, wait for the initial installation to complete (about 15 minutes). Upon completion you should see a running Chromium browser with a page load error. 
+Boot the Raspberry Pi with the SD-card, wait for the initial installation to complete (about 15 minutes). Upon completion you should see a running Chromium browser with a page load error.
 
 Make sure you can connect to the Raspberry Pi via ssh as root (see root password in ansible/files/boot/dietpi.txt).
 
-## Update engines, audio files (optional for 32-bit image)
+## Update engines, audio files (optional)
 
 From an existing PicoChess installation:
 * Copy the files from the talker directory into the ansible/files/talker/ folder of this repository.
@@ -56,5 +56,5 @@ You can run the playbook again if you update engine or audio files. The first ru
 ## Cleanup
 
 Check the /boot/config.txt file for changes. I need to remove the line
-dtoverlay=vc4-kms-v3d 
+dtoverlay=vc4-kms-v3d
 to make audio work over HDMI on my system.

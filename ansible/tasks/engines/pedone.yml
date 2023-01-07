@@ -11,7 +11,6 @@
     option: name
     value: Pedone 3.0
     state: present
-    create: false
 
 - name: Ensure "small=Pedone" is in pedone section
   community.general.ini_file:
@@ -20,7 +19,6 @@
     option: small
     value: Pedone
     state: present
-    create: false
 
 - name: Ensure "medium=Pedone3" is in pedone section
   community.general.ini_file:
@@ -29,7 +27,6 @@
     option: medium
     value: Pedone3
     state: present
-    create: false
 
 - name: Ensure "large=Pedone 3.0" is in pedone section
   community.general.ini_file:
@@ -38,7 +35,6 @@
     option: large
     value: Pedone 3.0
     state: present
-    create: false
 
 - name: Ensure "elo=3000" is in pedone section
   community.general.ini_file:
@@ -47,7 +43,6 @@
     option: elo
     value: 3000
     state: present
-    create: false
 
 - name: Ensure "levels=11" is in pedone section
   community.general.ini_file:
@@ -56,7 +51,6 @@
     option: levels
     value: 11
     state: present
-    create: false
 
 - name: Ensure "ponder/brain=n" is in pedone section
   community.general.ini_file:
@@ -65,4 +59,3 @@
     option: ponder/brain
     value: n
     state: present
-    create: false
