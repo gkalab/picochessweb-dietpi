@@ -2,7 +2,7 @@
 - name: Clone https://github.com/gkalab/picochess
   ansible.builtin.git:
     repo: https://github.com/gkalab/picochess
-    version: feature/picochessweb
+    version: master
     dest: /opt/picochess
     force: true
 

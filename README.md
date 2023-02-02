@@ -4,7 +4,7 @@ This repository uses Ansible to automate the creation of SD card images for Pico
 
 ## Base installation of DietPi
 
-Last DietPi version tested: DietPi v8.12.1
+Last DietPi version tested: DietPi v8.13
 
 * Download the latest DietPi image for Raspberry Pi (ARMv7 32-bit image or ARMv8 64-bit image) from https://dietpi.com/.
 * Flash the image to an SD-card (8GB minimum size).
