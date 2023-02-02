@@ -12,20 +12,23 @@
 
     - name: Install PicoChess
       ansible.builtin.import_tasks: tasks/picochess.yml
+      tags: picochess
 
     - name: Install games database
       ansible.builtin.import_tasks: tasks/gamesdb.yml
+      tags: picochess
 
     - name: Install opening book server
       ansible.builtin.import_tasks: tasks/obooksrv.yml
+      tags: picochess
 
     - name: Install voices
       ansible.builtin.import_tasks: tasks/voices.yml
-      tags: voices
+      tags: picochess, voices
 
     - name: Install architecture dependent binaries/engines
       ansible.builtin.import_tasks: tasks/architecture.yml
-      tags: engines
+      tags: picochess, engines
 
     - name: Add splash screen
       ansible.builtin.import_tasks: tasks/splash.yml
