@@ -30,30 +30,10 @@
     src: files/etc/systemd/system/
     dest: /etc/systemd/system/
 
-# the bcrypt module requires Rust to compile
-- name: Check if cargo is installed
-  ansible.builtin.shell: command -v cargo >/dev/null 2>&1
-  register: cargo_exists
-  ignore_errors: true
-  changed_when: false
-  tags:
-    - rust
-
-- name: Download rustup
-  when: cargo_exists is failed
-  ansible.builtin.get_url:
-    url: https://sh.rustup.rs
-    dest: /tmp/sh.rustup.rs
-    mode: '0755'
-    force: 'yes'
-  tags:
-    - rust
-
-- name: Install rust/cargo
-  when: cargo_exists is failed
-  ansible.builtin.command: /tmp/sh.rustup.rs -y
-  tags:
-    - rust
+# the bcrypt module requires Rust to compile on armv7
+- name: Install Rust
+  ansible.builtin.import_tasks: rust.yml
+  when: ansible_architecture == "armv7l"
 
 - name: Install PicoChess dependencies
   ansible.builtin.pip:
