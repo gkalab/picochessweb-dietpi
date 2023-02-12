@@ -1,4 +1,10 @@
 ---
+- name: Git config
+  ansible.builtin.shell: git config --global --add safe.directory /opt/picochess
+  changed_when: false
+  tags:
+    - skip_ansible_lint
+
 - name: Clone https://github.com/gkalab/picochess
   ansible.builtin.git:
     repo: https://github.com/gkalab/picochess

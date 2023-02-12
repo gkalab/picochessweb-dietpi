@@ -4,13 +4,13 @@ This repository uses Ansible to automate the creation of SD card images for Pico
 
 ## Base installation of DietPi
 
-Last DietPi version tested: DietPi v8.13
+Last DietPi version tested: DietPi v8.14.2
 
 * Download the latest DietPi image for Raspberry Pi (ARMv7 32-bit image or ARMv8 64-bit image) from https://dietpi.com/.
 * Flash the image to an SD-card (8GB minimum size).
 * Replace the dietpi.txt on the FAT32 partition with the file from the config folder.
 * Adjust the config.txt in the same FAT32 partition to your system. Example configurations I am using are in the config folder.
-* Enter the SSID and wifi passowrd in the file dietpi-wifi.txt in the same FAT32 partition.
+* Enter the SSID and wifi password in the file dietpi-wifi.txt in the same FAT32 partition.
 
 ## First boot
 
