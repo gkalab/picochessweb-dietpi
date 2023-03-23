@@ -1,46 +1,46 @@
 ---
-# Komodo 13 is a Linux x86_64 binary - needs box64 to run
-- name: Synchronize Komodo 13
+# Komodo 14 is a Linux x86_64 binary - needs box64 to run
+- name: Synchronize Komodo 14
   ansible.posix.synchronize:
-    src: files/extra_engines/komodo13/
+    src: files/extra_engines/komodo14/
     dest: /opt/picochess/engines/{{ ansible_architecture }}/komodo/
 
-- name: Ensure "name=Komodo 13" is in komodo section
+- name: Ensure "name=Komodo 14" is in komodo section
   community.general.ini_file:
     path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
-    section: komodo/komodo-13.02-linux
+    section: komodo/komodo-14.1-linux
     option: name
-    value: Komodo 13
+    value: Komodo 14
     state: present
 
 - name: Ensure "small=Komodo" is in komodo section
   community.general.ini_file:
     path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
-    section: komodo/komodo-13.02-linux
+    section: komodo/komodo-14.1-linux
     option: small
     value: Komodo
     state: present
 
-- name: Ensure "medium=Komodo13" is in komodo section
+- name: Ensure "medium=Komodo14" is in komodo section
   community.general.ini_file:
     path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
-    section: komodo/komodo-13.02-linux
+    section: komodo/komodo-14.1-linux
     option: medium
-    value: Komodo13
+    value: Komodo14
     state: present
 
-- name: Ensure "large=Komodo 13" is in komodo section
+- name: Ensure "large=Komodo 14" is in komodo section
   community.general.ini_file:
     path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
-    section: komodo/komodo-13.02-linux
+    section: komodo/komodo-14.1-linux
     option: large
-    value: Komodo 13
+    value: Komodo 14
     state: present
 
 - name: Ensure "elo=3000" is in komodo section
   community.general.ini_file:
     path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
-    section: komodo/komodo-13.02-linux
+    section: komodo/komodo-14.1-linux
     option: elo
     value: 3000
     state: present
@@ -48,7 +48,7 @@
 - name: Ensure "ponder/brain=n" is in komodo section
   community.general.ini_file:
     path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
-    section: komodo/komodo-13.02-linux
+    section: komodo/komodo-14.1-linux
     option: ponder/brain
     value: n
     state: present

@@ -4,12 +4,11 @@ This repository uses Ansible to automate the creation of SD card images for Pico
 
 ## Base installation of DietPi
 
-Last DietPi version tested: DietPi v8.14.2
+Last DietPi version tested: DietPi v8.15.2 (64-bit)
 
 * Download the latest DietPi image for Raspberry Pi (ARMv7 32-bit image or ARMv8 64-bit image) from https://dietpi.com/.
 * Flash the image to an SD-card (8GB minimum size).
 * Replace the dietpi.txt on the FAT32 partition with the file from the config folder.
-* Adjust the config.txt in the same FAT32 partition to your system. Example configurations I am using are in the config folder.
 * Enter the SSID and wifi password in the file dietpi-wifi.txt in the same FAT32 partition.
 
 ## First boot
@@ -28,9 +27,9 @@ From an existing PicoChess installation:
 
 Some PicoChess options can only be set via the picochess.ini file. Adjust the settings in ansible/files/opt/picochess/picochess.ini for your system.
 
-## Add Komodo 13.02 engine binary (optional, only if ARMv8 64-bit image is used)
+## Add Komodo 14.1 engine binary (optional, only if ARMv8 64-bit image is used)
 
-Download Komodo 13 from https://komodochess.com/pub/komodo-13.zip and place the included komodo-13.02-linux in the directory ansible/files/extra_engines/komodo13/ .
+Download Komodo 14 from https://komodochess.com/pub/komodo-14.zip and place the included komodo-14.1-linux binary in the directory ansible/files/extra_engines/komodo14/ .
 
 ## Add Pedone 3.0 engine binary (optional, only if ARMv8 64-bit image is used)
 

@@ -22,12 +22,12 @@
 
 - name: Ensure armhf libraries are installed
   ansible.builtin.apt:
-    name: 
+    name:
       - libc6:armhf
-      - libatomic1:armhf 
-      - libstdc++6:armhf 
-      - libopenblas-dev:armhf 
-      - zlib1g:armhf 
+      - libatomic1:armhf
+      - libstdc++6:armhf
+      - libopenblas-dev:armhf
+      - zlib1g:armhf
       - libxcb1:armhf
     state: present
   when: result_armhf_check.rc == 1
@@ -50,8 +50,8 @@
       - "--exclude=armv7l"
 
 # Komodo engine
-- name: Install Komodo 13 (Linux x86_64)
-  ansible.builtin.include_tasks: engines/komodo13.yml
+- name: Install Komodo 14 (Linux x86_64)
+  ansible.builtin.include_tasks: engines/komodo14.yml
 
 # Shredder 4 Classic MP
 - name: Install Shredder 4 Classic MP (Linux x86 32-bit)
