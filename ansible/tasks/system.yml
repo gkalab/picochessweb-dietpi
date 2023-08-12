@@ -9,7 +9,7 @@
       - python3-pip
       - build-essential
       - sox
-      - libopenblas-base  # maia engine
+      - libopenblas0  # maia engine
       - libsdl2-2.0-0  # mess
       - libsdl2-ttf-2.0-0  # mess
       - libqt5widgets5  # mess

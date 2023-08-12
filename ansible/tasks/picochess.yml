@@ -8,7 +8,7 @@
 - name: Clone https://github.com/gkalab/picochess
   ansible.builtin.git:
     repo: https://github.com/gkalab/picochess
-    version: v3.1.0
+    version: v3.2.0
     dest: /opt/picochess
     force: true
 
@@ -44,6 +44,10 @@
 - name: Install PicoChess dependencies
   ansible.builtin.pip:
     requirements: /opt/picochess/requirements.txt
+
+- name: Patch Python libs to use collections.abc.MutableMapping instead of collections.MutableMapping
+  ansible.builtin.import_tasks: patch_python_libs.yml
+  tags: patch_python_libs
 
 - name: Enable service picochess
   ansible.builtin.service:

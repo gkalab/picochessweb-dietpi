@@ -1,0 +1,21 @@
+---
+- name: Patch engine.py to use collections.abc.MutableMapping
+  ansible.builtin.lineinfile:
+    dest: /usr/local/lib/python3.11/dist-packages/chess/engine.py
+    regexp: '^class OptionMap\(collections\.MutableMapping\):'
+    line: 'class OptionMap(collections.abc.MutableMapping):'
+    state: present
+
+- name: Patch pgn.py to use collections.abc.MutableMapping
+  ansible.builtin.lineinfile:
+    dest: /usr/local/lib/python3.11/dist-packages/chess/pgn.py
+    regexp: '^class Headers\(collections\.MutableMapping\):'
+    line: 'class Headers(collections.abc.MutableMapping):'
+    state: present
+
+- name: Patch engine.py to use collections.abc.MutableMapping
+  ansible.builtin.lineinfile:
+    dest: /usr/local/lib/python3.11/dist-packages/tornado/httputil.py
+    regexp: '^class HTTPHeaders\(collections\.MutableMapping\):'
+    line: 'class HTTPHeaders(collections.abc.MutableMapping):'
+    state: present
