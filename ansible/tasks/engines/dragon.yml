@@ -1,54 +1,54 @@
 ---
-# Komodo 14 is a Linux x86_64 binary - needs box64 to run
-- name: Synchronize Komodo 14
+# Dragon is a Linux x86_64 binary - needs box64 to run
+- name: Synchronize Dragon
   ansible.posix.synchronize:
-    src: files/extra_engines/komodo14/
-    dest: /opt/picochess/engines/{{ ansible_architecture }}/komodo/
+    src: files/extra_engines/dragon/
+    dest: /opt/picochess/engines/{{ ansible_architecture }}/dragon/
 
-- name: Ensure "name=Komodo 14" is in komodo section
+- name: Ensure "name=Dragon" is in dragon section
   community.general.ini_file:
     path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
-    section: komodo/komodo-14.1-linux
+    section: dragon/dragon-linux
     option: name
-    value: Komodo 14
+    value: Dragon
     state: present
 
-- name: Ensure "small=Komodo" is in komodo section
+- name: Ensure "small=dragon" is in dragon section
   community.general.ini_file:
     path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
-    section: komodo/komodo-14.1-linux
+    section: dragon/dragon-linux
     option: small
-    value: Komodo
+    value: dragon
     state: present
 
-- name: Ensure "medium=Komodo14" is in komodo section
+- name: Ensure "medium=Dragon" is in dragon section
   community.general.ini_file:
     path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
-    section: komodo/komodo-14.1-linux
+    section: dragon/dragon-linux
     option: medium
-    value: Komodo14
+    value: Dragon
     state: present
 
-- name: Ensure "large=Komodo 14" is in komodo section
+- name: Ensure "large=Dragon" is in dragon section
   community.general.ini_file:
     path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
-    section: komodo/komodo-14.1-linux
+    section: dragon/dragon-linux
     option: large
-    value: Komodo 14
+    value: Dragon
     state: present
 
-- name: Ensure "elo=3000" is in komodo section
+- name: Ensure "elo=3000" is in dragon section
   community.general.ini_file:
     path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
-    section: komodo/komodo-14.1-linux
+    section: dragon/dragon-linux
     option: elo
     value: 3000
     state: present
 
-- name: Ensure "ponder/brain=n" is in komodo section
+- name: Ensure "ponder/brain=n" is in dragon section
   community.general.ini_file:
     path: /opt/picochess/engines/{{ ansible_architecture }}/favorites.ini
-    section: komodo/komodo-14.1-linux
+    section: dragon/dragon-linux
     option: ponder/brain
     value: n
     state: present

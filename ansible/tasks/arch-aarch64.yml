@@ -49,9 +49,9 @@
     rsync_opts:
       - "--exclude=armv7l"
 
-# Komodo engine
-- name: Install Komodo 14 (Linux x86_64)
-  ansible.builtin.include_tasks: engines/komodo14.yml
+# Dragon engine
+- name: Install Dragon (Linux x86_64)
+  ansible.builtin.include_tasks: engines/dragon.yml
 
 # Shredder 4 Classic MP
 - name: Install Shredder 4 Classic MP (Linux x86 32-bit)

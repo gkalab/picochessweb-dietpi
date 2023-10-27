@@ -27,9 +27,10 @@ From an existing PicoChess installation:
 
 Some PicoChess options can only be set via the picochess.ini file. Adjust the settings in ansible/files/opt/picochess/picochess.ini for your system.
 
-## Add Komodo 14.1 engine binary (optional, only if ARMv8 64-bit image is used)
+## Add Komodo Dragon engine binary (optional, only if ARMv8 64-bit image is used)
 
-Download Komodo 14 from https://komodochess.com/pub/komodo-14.zip and place the included komodo-14.1-linux binary in the directory ansible/files/extra_engines/komodo14/ .
+Download Komodo Dragon from https://komodochess.com/pub/dragon.zip and place the included dragon-linux binary in the directory ansible/files/extra_engines/dragon/ .
+Download the Komodo opening book from https://komodochess.com/pub/komodo_book.zip and place the included file komodo.bin in the same directory.
 
 ## Add Pedone 3.0 engine binary (optional, only if ARMv8 64-bit image is used)
 
