@@ -1,4 +1,9 @@
 ---
+- name: Ensure no chromium lock file is present
+  ansible.builtin.file:
+    path: /root/.config/chromium/SingletonLock
+    state: absent
+
 - name: Reboot
   ansible.builtin.reboot:
     reboot_timeout: 120

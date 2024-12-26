@@ -4,7 +4,7 @@ This repository uses Ansible to automate the creation of SD card images for Pico
 
 ## Base installation of DietPi
 
-Last DietPi version tested: DietPi v8.20 Bookworm (64-bit)
+Last DietPi version tested: DietPi v9.9.0 Bookworm (64-bit)
 
 * Download the latest DietPi image for Raspberry Pi (ARMv7 32-bit image or ARMv8 64-bit image) from https://dietpi.com/.
 * Flash the image to an SD-card (8GB minimum size).
@@ -53,7 +53,7 @@ Run the playbook: `ansible-playbook main.yml`
 
 You can run the playbook again if you update engine or audio files. The first run on a freshly installed system takes a little over 20 minutes using wifi.
 
-After initial installation, to just update PicoChess you can enter `ansible-playbook main.yml tags=picochess`
+After initial installation, to just update PicoChess you can enter `ansible-playbook main.yml --tags picochess`
 
 ## Cleanup
 
