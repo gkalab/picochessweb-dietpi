@@ -4,16 +4,16 @@ This repository uses Ansible to automate the creation of SD card images for Pico
 
 ## Base installation of DietPi
 
-Last DietPi version tested: DietPi v9.9.0 Bookworm (64-bit)
+Last DietPi version tested: DietPi v9.19 Trixie (64-bit)
 
-* Download the latest DietPi image for Raspberry Pi (ARMv7 32-bit image or ARMv8 64-bit image) from https://dietpi.com/.
+* Download the latest DietPi image for Raspberry Pi (ARMv8 64-bit image) from https://dietpi.com/.
 * Flash the image to an SD-card (8GB minimum size).
 * Replace the dietpi.txt on the FAT32 partition with the file from the config folder.
 * Enter the SSID and wifi password in the file dietpi-wifi.txt in the same FAT32 partition.
 
 ## First boot
 
-Boot the Raspberry Pi with the SD-card, wait for the initial installation to complete (about 15 minutes). Upon completion you should see a running Chromium browser with a page load error.
+Boot the Raspberry Pi with the SD-card, wait for the initial installation to complete (about 10 minutes on a Raspberry Pi 4). Upon completion you should see a running Chromium browser with a page load error.
 
 Make sure you can connect to the Raspberry Pi via ssh as root (see root password in inventory.ini).
 
@@ -27,12 +27,12 @@ From an existing PicoChess installation:
 
 Some PicoChess options can only be set via the picochess.ini file. Adjust the settings in ansible/files/opt/picochess/picochess.ini for your system.
 
-## Add Komodo Dragon engine binary (optional, only if ARMv8 64-bit image is used)
+## Add Komodo Dragon engine binary (optional)
 
 Download Komodo Dragon from https://komodochess.com/pub/dragon.zip and place the included dragon-linux binary in the directory ansible/files/extra_engines/dragon/ .
 Download the Komodo opening book from https://komodochess.com/pub/komodo_book.zip and place the included file komodo.bin in the same directory.
 
-## Add Pedone 3.0 engine binary (optional, only if ARMv8 64-bit image is used)
+## Add Pedone 3.0 engine binary (optional)
 
 Download Pedone 3.0 from https://drive.google.com/file/d/17ImH_wz4b5FAvDJH_UTHfQkjk5Ijl0vv/view?usp=sharing and place the included Pedone_armv8 in the directory ansible/files/extra_engines/pedone/ .
 
@@ -45,7 +45,7 @@ apt-get install sshpass rsync
 
 * Install requirements: `cd ansible; ansible-galaxy collection install -r requirements.yml`
 * Make sure you can connect to your Raspberry Pi via ssh: `ssh root@<IP-address>`
-* Replace <raspberrypi-address> with the IP address of your Raspberry Pi in the file inventory.ini
+* Replace <raspberrypi-address> with the IP address of your Raspberry Pi in the file inventory.ini. Also update the ssh password in this file if you changed it.
 
 ## Start Ansible
 

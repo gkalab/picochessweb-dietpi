@@ -6,6 +6,7 @@
       - less
       - git
       - avahi-daemon  # mDNS
+      - python3-setuptools
       - python3-pip
       - build-essential
       - sox

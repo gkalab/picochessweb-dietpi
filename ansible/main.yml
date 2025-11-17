@@ -26,8 +26,8 @@
       ansible.builtin.import_tasks: tasks/voices.yml
       tags: picochess, voices
 
-    - name: Install architecture dependent binaries/engines
-      ansible.builtin.import_tasks: tasks/architecture.yml
+    - name: Install aarch64 dependent binaries/engines
+      ansible.builtin.import_tasks: tasks/arch-aarch64.yml
       tags: picochess, engines
 
     - name: Add splash screen

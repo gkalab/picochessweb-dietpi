@@ -5,10 +5,10 @@
   tags:
     - skip_ansible_lint
 
-- name: Clone https://github.com/gkalab/picochess
+- name: Clone https://github.com/JohanSjoblom/picochess
   ansible.builtin.git:
-    repo: https://github.com/gkalab/picochess
-    version: v3.2.0
+    repo: https://github.com/JohanSjoblom/picochess
+    version: master
     dest: /opt/picochess
     force: true
 
@@ -36,18 +36,9 @@
     src: files/etc/systemd/system/
     dest: /etc/systemd/system/
 
-# the bcrypt module requires Rust to compile on armv7
-- name: Install Rust
-  ansible.builtin.import_tasks: rust.yml
-  when: ansible_architecture == "armv7l"
-
 - name: Install PicoChess dependencies
   ansible.builtin.pip:
     requirements: /opt/picochess/requirements.txt
-
-- name: Patch Python libs to use collections.abc.MutableMapping instead of collections.MutableMapping
-  ansible.builtin.import_tasks: patch_python_libs.yml
-  tags: patch_python_libs
 
 - name: Enable service picochess
   ansible.builtin.service:
