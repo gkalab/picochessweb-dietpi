@@ -4,6 +4,7 @@
   ansible.posix.synchronize:
     src: files/extra_engines/dragon/
     dest: /opt/picochess/engines/{{ ansible_architecture }}/dragon/
+  delegate_to: localhost
 
 - name: Ensure "name=Dragon" is in dragon section
   community.general.ini_file:

@@ -4,6 +4,7 @@
   ansible.posix.synchronize:
     src: files/extra_engines/shredder/
     dest: /opt/picochess/engines/{{ ansible_architecture }}/shredder/
+  delegate_to: localhost
 
 - name: Ensure "name=Shredder Classic 4 MP" is in shredder section
   community.general.ini_file:

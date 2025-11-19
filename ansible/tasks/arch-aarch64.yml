@@ -4,6 +4,7 @@
   ansible.posix.synchronize:
     src: files/box64/
     dest: /
+  delegate_to: localhost
 
 # box86
 - name: Check if armhf is enabled
@@ -36,6 +37,7 @@
   ansible.posix.synchronize:
     src: files/box86/
     dest: /
+  delegate_to: localhost
 
 - name: Restart service systemd-binfmt
   ansible.builtin.service:
@@ -48,6 +50,7 @@
     dest: /opt/picochess/engines/
     rsync_opts:
       - "--exclude=armv7l"
+  delegate_to: localhost
 
 # Dragon engine
 - name: Install Dragon (Linux x86_64)

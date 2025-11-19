@@ -3,6 +3,7 @@
   ansible.posix.synchronize:
     src: files/extra_engines/pedone/
     dest: /opt/picochess/engines/{{ ansible_architecture }}/pedone/
+  delegate_to: localhost
 
 - name: Ensure "name=Pedone 3.0" is in pedone section
   community.general.ini_file:

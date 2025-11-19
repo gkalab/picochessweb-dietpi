@@ -16,6 +16,7 @@
   ansible.posix.synchronize:
     src: files/opt/picochess/
     dest: /opt/picochess/
+  delegate_to: localhost
 
 - name: Ensure default engine is present in picochess.ini
   ansible.builtin.lineinfile:
@@ -35,6 +36,7 @@
   ansible.posix.synchronize:
     src: files/etc/systemd/system/
     dest: /etc/systemd/system/
+  delegate_to: localhost
 
 - name: Install PicoChess dependencies
   ansible.builtin.pip:
